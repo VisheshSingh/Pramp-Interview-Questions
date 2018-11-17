@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flip Counter</title>
+    <style>
+    /* --------------------
+     Add your styling here
+     -------------------- */
+      .container  {
+        border: 1px solid #000;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+       #tens, #ones {
+        padding: 20px;
+        border:1px solid #000;
+        background: #ccc;
+        margin: 30px;
+      } 
+      
+     
+    </style>
+</head>
+<body>
+<div class="container">
+    <!----------------------
+    Add your markup here
+    ------------------------>
+  <span id="tens">
+  0
+  </span>
+  
+  <span id="ones">
+  0
+  </span>
+  
+</div>
+<script>
+    
+  setInterval(() => {
+      increment();
+    }, 1000);
+  
+  function increment() {
+    var tens = parseInt( document.getElementById('tens').textContent);
+    var ones = parseInt( document.getElementById('ones').textContent);
+    ones += 1;
+    
+    if(ones > 9) {
+      ones = 0;
+      tens+=1;
+      
+      if(tens > 5){
+        tens = 0;
+      }
+    }
+    
+    document.getElementById('ones').innerHTML = ones;
+    document.getElementById('tens').innerHTML = tens;
+  };
+</script>
+</body>
+</html>
