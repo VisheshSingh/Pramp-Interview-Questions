@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Infinite Scroll</title>
+    <style>
+      .grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .imgs {
+        margin: 3%;
+        width: 27%;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"><div class="grid" id="images"></div></div>
+    <script>
+      var images = document.getElementById("images");
+      var temp = `<img class="imgs" src="http://api.adorable.io/avatars/3213">
+                              <img class="imgs" src="http://api.adorable.io/avatars/2323">
+                              <img class="imgs" src="http://api.adorable.io/avatars/65">
+                              <img class="imgs" src="http://api.adorable.io/avatars/656">
+                              <img class="imgs" src="http://api.adorable.io/avatars/656">
+                              <img class="imgs" src="http://api.adorable.io/avatars/221">
+                              <img class="imgs" src="http://api.adorable.io/avatars/777">
+                              <img class="imgs" src="http://api.adorable.io/avatars/67">
+                              <img class="imgs" src="http://api.adorable.io/avatars/999">
+                              <img class="imgs" src="http://api.adorable.io/avatars/000">
+                              <img class="imgs" src="http://api.adorable.io/avatars/1100">`;
+      images.innerHTML = temp;
+      window.onscroll = function() {
+        temp =
+          temp +
+          ('<img class="imgs" src="http://api.adorable.io/avatars/' +
+            parseInt(Math.random() * 100000) +
+            '">');
+        images.innerHTML = temp;
+      };
+
+      /* Make sure your peer understands how to use the API early on, to allow focusing on the actual implementation
+Encourage your peer to first have a solution working end-to-end, before optimizing for performance or edge cases
+Make sure to discuss the following topics and tradeoffs, even if we won’t have the time to address them all:
+what should we do on window resize?
+how can we optimize performance?*/
+    </script>
+  </body>
+</html>
