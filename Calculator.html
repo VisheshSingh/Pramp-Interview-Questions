@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculator</title>
+    <style>
+      /* --------------------
+     Add your styling here
+     -------------------- */
+      .calculator {
+        max-width: 400px;
+        text-align: center;
+        border: 1px solid #000;
+        margin: auto;
+      }
+
+      input {
+        padding: 10px 20px;
+        margin: 10px auto;
+      }
+
+      button {
+        display: inline-block;
+        padding: 20px;
+        margin: 20px;
+      }
+
+      p {
+        font-size: 30px;
+        background: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <div id="inp">
+        <input type="number" id="inp1" placeholder="Enter num1" /><br />
+        <input type="number" id="inp2" placeholder="Enter num2" />
+      </div>
+
+      <button id="add">+</button> <button id="subtract">-</button>
+      <button id="multiply">*</button> <button id="divide">/</button>
+
+      <h3>Result:</h3>
+      <p id="output"></p>
+    </div>
+
+    <script>
+      document.getElementById("add").addEventListener("click", function() {
+        var num1 = parseInt(document.getElementById("inp1").value);
+        var num2 = parseInt(document.getElementById("inp2").value);
+        document.getElementById("output").innerHTML = num1 + num2;
+      });
+
+      document.getElementById("subtract").addEventListener("click", function() {
+        var num1 = parseInt(document.getElementById("inp1").value);
+        var num2 = parseInt(document.getElementById("inp2").value);
+        document.getElementById("output").innerHTML = num1 - num2;
+      });
+
+      document.getElementById("multiply").addEventListener("click", function() {
+        var num1 = parseInt(document.getElementById("inp1").value);
+        var num2 = parseInt(document.getElementById("inp2").value);
+        document.getElementById("output").innerHTML = num1 * num2;
+      });
+
+      document.getElementById("divide").addEventListener("click", function() {
+        var num1 = parseInt(document.getElementById("inp1").value);
+        var num2 = parseInt(document.getElementById("inp2").value);
+        document.getElementById("output").innerHTML = num1 / num2;
+      });
+    </script>
+  </body>
+</html>
