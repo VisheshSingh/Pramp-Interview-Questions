@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Search Autocomplete</title>
+    <!-- Included some basic styling, change at will -->
+    <style>
+      .query-highight {
+        background: yellow;
+        padding: 10px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.rawgit.com/prampcontent/3ea04cbd0f61a798e96afbe5d31ec2f9/raw/e879e32222b543b29a168daa089e2f9f28cf9eb2/autocomplete.css"
+    />
+  </head>
+  <body>
+    <form class="search-form">
+      <input
+        type="text"
+        class="search-input"
+        id="userInp"
+        placeholder="Start typing a movie title..."
+      />
+      <ul class="results" id="res"></ul>
+    </form>
+    <!-- Helper code to provide a search API for mock data -->
+    <script src="https://cdn.rawgit.com/prampcontent/180077452f9279073cab1035f60d30cf/raw/9cbf891a80bad9ad09c6261ef9578a65502922cc/search_helper.js"></script>
+    <script>
+      // Get input field
+      const searchInputElement = document.querySelector(".search-input");
+      // Get results field
+      const resultsElement = document.querySelector(".results");
+
+      // on keyup event; fetch data from api
+      searchInputElement.addEventListener("keyup", function(e) {
+        var userInput = e.target.value;
+        var regex = new Regex(userInput, "gi");
+        searchData(userInput).then(data => {
+          var html = data.map(movie => {
+            let title = movie.title.replace(
+              regex,
+              `<span class="query-highlight">${userInput}</span>`
+            );
+            return `
+                  <li>
+                    <span class="title">${title}</span>
+                    <span class="rating">${movie.rating}</span>
+                  </li>
+                `;
+          });
+          resultsElement.innerHTML = html.join("");
+        });
+      });
+    </script>
+  </body>
+</html>
